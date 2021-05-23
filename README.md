@@ -4,4 +4,4 @@ Dockerfile to build from busybox using a static curl from [moparisthebest/static
 ## Registries
 Publishing to Docker hub @ [ferrgo/curlybox](https://hub.docker.com/r/ferrgo/curlybox)
 
-Publishing to Github packages @ [docker.pkg.github.com/ferrgo/curlybox/curlybox:latest](https://github.com/ferrgo/curlybox/packages)
+Publishing to Github packages @ [docker.pkg.github.com/ferrgo/curlybox/curlybox](https://github.com/ferrgo/curlybox/packages)
