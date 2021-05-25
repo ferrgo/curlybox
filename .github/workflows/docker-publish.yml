@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - dev
     tags:
       - v*
 
@@ -40,6 +41,7 @@ jobs:
           
           # Use Docker `latest` tag convention
           [ "$VERSION" == "main" ] && VERSION=latest
+          [ "$VERSION" == "dev" ] && VERSION=stable
           
           # Share the VERSION for next steps
           echo "VERSION=$VERSION" >> $GITHUB_ENV
@@ -56,7 +58,7 @@ jobs:
           docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
           docker push $IMAGE_ID:$VERSION
       - name: Log into GHCR
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
       - name: Push image to Github Container Registry
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository }}/$IMAGE_NAME
