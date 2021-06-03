@@ -9,5 +9,6 @@ RUN wget -O curl ${CURL_BIN_URL} \
     && mv curl /bin/curl
 
 FROM busybox:1.33.1
+
 COPY --from=build /etc/ssl/certs /etc/ssl/certs
 COPY --from=build /bin/curl /bin/curl
