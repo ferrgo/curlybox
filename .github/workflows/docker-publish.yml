@@ -7,12 +7,22 @@ on:
       - dev
     tags:
       - v*
+  pull_request:
+    branches:
+      - main
+      - dev
 
 env:
   IMAGE_NAME: curlybox
 
 jobs:
-  test:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2 
+      - name: hadolint
+        uses: reviewdog/action-hadolint@v1
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
